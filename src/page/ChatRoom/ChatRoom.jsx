@@ -16,6 +16,15 @@ const handleSubmit = (e)=>{
 e.preventDefault();
 console.log(message)
 
+let boxchat = document.querySelector('.chat-box');
+boxchat.innerHTML += `
+<div class='conv-type-main-user'>
+                <h2>Cedric</h2>
+                <p>${message}</p>
+            </div>
+` 
+document.getElementById('form').reset()
+
 }
 
 
@@ -38,9 +47,11 @@ console.log(message)
                }) 
 
             }
+
+
                 
         </div>
-        <form onSubmit={handleSubmit} className='div-submit'>
+        <form id='form' onSubmit={handleSubmit} className='div-submit'>
 
             <input className='input-text' onInput={(e)=>setMessage(e.target.value)} type="text" />
             <input className='input-btn'  type="submit" value="Envoyer"/>
