@@ -79,10 +79,26 @@ const handleSubmit = (e)=>{
 
     }
 
-    console.log(lastName)
-    console.log(email)
-    console.log(password)
-    console.log(confirmPassword)
+    // créer le user en base de données apres l'enregistrement 
+
+    fetch('http://localhost:5002/user',{
+        method: "POST",
+        body: JSON.stringify({
+            firstName: firstName ,
+            lastName: lastName,
+            email: email,
+             password: password,
+        }),
+        headers:{
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then((response) => response.json())
+    .then((json) => console.log(json));
+
+    // console.log(lastName)
+    // console.log(email)
+    // console.log(password)
+    // console.log(confirmPassword)
     // effacer le fomulaire apres envoie 
     document.getElementById('form').reset();
 

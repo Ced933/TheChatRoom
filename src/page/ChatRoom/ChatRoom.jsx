@@ -7,8 +7,10 @@ export default function ChatRoom() {
     useEffect(()=>{
          fetch('http://localhost:5002/post').then((res)=>res.json()).then(data => setArrayData (data))
     },[])
- 
+   
 console.log(arrayData);
+console.log(window.scrollY)
+console.log(window.innerHeight)
 
 const[message,setMessage]= useState('')
 
@@ -23,8 +25,15 @@ boxchat.innerHTML += `
                 <p>${message}</p>
             </div>
 ` 
-document.getElementById('form').reset()
+document.getElementById('form').reset();
+// on vide la variable message sinon elle gardera en mémoire le dernier message 
+setMessage('')
+// a chaque message on est mis au pied de la conversation 
+document.getElementById('chatbox').scrollTo(0, document.body.scrollHeight);
 
+// window.addEventListener('scoll',() =>{
+
+// })
 }
 
 
@@ -36,7 +45,7 @@ document.getElementById('form').reset()
         <div className='header-chat'>
             <h4>Chatroom</h4>
         </div>
-        <div className='chat-box'>
+        <div className='chat-box' id='chatbox'>
             {
                arrayData.map( (message)=>{
                
@@ -53,7 +62,7 @@ document.getElementById('form').reset()
         </div>
         <form id='form' onSubmit={handleSubmit} className='div-submit'>
 
-            <input className='input-text' onInput={(e)=>setMessage(e.target.value)} type="text" />
+            <input className='input-text' placeholder='Message' onInput={(e)=>setMessage(e.target.value)} type="text" />
             <input className='input-btn'  type="submit" value="Envoyer"/>
         </form>
 
