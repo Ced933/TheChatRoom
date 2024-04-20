@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './ChatRoom.scss';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function ChatRoom() {
     const  [arrayData,setArrayData ] =useState([])
+    const user = useSelector(state => state.user.userInfo)
 
     useEffect(()=>{
          axios.get('http://localhost:5002/post').then((res)=> setArrayData(res.data))
@@ -22,7 +24,7 @@ console.log(message)
 let boxchat = document.querySelector('.chat-box');
 boxchat.innerHTML += `
 <div class='conv-type-main-user'>
-                <h2>Cedric</h2>
+                <h2>${user.firstname} ${user.lastname}</h2>
                 <p>${message}</p>
             </div>
 ` 
