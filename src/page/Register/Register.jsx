@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Register.scss';
 import { Link } from 'react-router-dom';
+import Navigation from '../../components/Navigation/Navigation';
 
 export default function Register() {
 // variable name 
@@ -101,11 +102,17 @@ const handleSubmit = (e)=>{
     // console.log(confirmPassword)
     // effacer le fomulaire apres envoie 
     document.getElementById('form').reset();
-
+    // réinitialiser toutes les variables 
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
 }
 
   return (
     <div className="container-register">
+        
         <h1 className='title-register'>REGISTER</h1>
         <form id='form' onSubmit={handleSubmit} className='form-register'>
             <input className="input-login" onInput={(e)=>setFirstName(e.target.value)} type="text" placeholder="First name"/>

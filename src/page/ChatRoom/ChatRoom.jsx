@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './ChatRoom.scss';
+import axios from 'axios';
 
 export default function ChatRoom() {
     const  [arrayData,setArrayData ] =useState([])
 
     useEffect(()=>{
-         fetch('http://localhost:5002/post').then((res)=>res.json()).then(data => setArrayData (data))
+         axios.get('http://localhost:5002/post').then((res)=> setArrayData(res.data))
     },[])
    
 console.log(arrayData);

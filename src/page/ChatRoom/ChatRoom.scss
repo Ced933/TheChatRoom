@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     .body-chat{
-        width: 800px;
+        width: 60%;
         // border: 3px solid green;
         border: 3px solid black;
         .header-chat{
@@ -19,7 +19,7 @@
         }
         .chat-box{
            
-            height: 600px;
+            height: 400px;
             overflow-y: auto;
             overflow-x:hidden;
 
@@ -53,11 +53,11 @@
         // border: 1px solid red;
         width: 100%;
         .input-text{
-            width: 70%;
+            width: 60%;
             padding: 10px;
         }
         .input-btn{
-            width: 27%;
+            width: 35%;
             padding: 10px;
             background-color:#8C54FF ;
             color: white;
