@@ -14,7 +14,7 @@ const [arrayDataUser, setArrayDataUser] = useState([])
 // axios.defaults.withCredentials =true;
 const [passwordError, setPasswordError] = useState(false)
 
-let checkEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)
+// let checkEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)
 useEffect(()=>{
   axios.get('http://localhost:5002/user').then((res)=> setArrayDataUser(res.data))
 },[])
@@ -47,7 +47,7 @@ else if(email === userFind[0].email && password === userFind[0].password  ){
         }
       })
       let id = result.data.user._id;
-      navigate(`/profil/${id}`)
+      navigate(`profil/${id}`)
     }
   })
 
@@ -66,7 +66,7 @@ setPasswordError(true)
       <input className="input-login" onInput={(e)=>setEmail(e.target.value)} type="email" placeholder="Email"/>
       <input className="input-login"  onInput={(e)=>setPassword(e.target.value)} type="password" placeholder="Password" />
       {
-        passwordError && <p>l'email ou password est incorrect</p>
+        passwordError && <p className="error-accompt">L'email ou password est incorrect</p>
       }
       <input className="btn-submit" type="submit" value='valider'/>
       <Link to="/register" className="btn-link">You haven't an account ?</Link>

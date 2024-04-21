@@ -1,0 +1,21 @@
+.container-error-page{
+    height: 80dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .box-error-page{
+        text-align: center;
+        h3{
+            font-size: 25px;
+            margin: 0;
+            margin-bottom: 30px;
+        }
+        a{
+            background-color: #8C54FF;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 30px;
+        }
+    }
+}
