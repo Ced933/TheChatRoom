@@ -20,7 +20,7 @@ function App() {
         <Route path="/admin/*" element={<AdminRouter/> }  />
         <Route path="/auth/*" element={<AuthRouter/> }  /> */}
         <Route path="/" element={<BaseLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Login />} />
           <Route path="/register" element={<Register />} />
           {user.isConnect === "yes" ? (
             <Route path="/chat" element={<ChatRoom />} />
@@ -29,7 +29,7 @@ function App() {
             <Route path="/profil/:id" element={<Profil />} />
           ) : null}
 
-          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>

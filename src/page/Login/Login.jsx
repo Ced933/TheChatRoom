@@ -47,7 +47,7 @@ else if(email === userFind[0].email && password === userFind[0].password  ){
         }
       })
       let id = result.data.user._id;
-      navigate(`profil/${id}`)
+      navigate(`/profil/${id}`)
     }
   })
 

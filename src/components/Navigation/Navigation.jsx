@@ -31,7 +31,7 @@ const dispatch = useDispatch();
           {
             user.isConnect === 'yes' ?  ( <ul><li><NavLink to='chat'>ChatRoom</NavLink></li> <li><NavLink to='profil/:id' >Profil</NavLink></li>
             <li><NavLink onClick={handleLogout} to='/'>Logout</NavLink></li></ul>) : (<ul><li><NavLink to='/register'>Sign up</NavLink></li>
-              <li><NavLink className='sign-in' to='/login'>Sign In</NavLink></li></ul>)
+              <li><NavLink className='sign-in' to='/'>Sign In</NavLink></li></ul>)
           }  
            
             

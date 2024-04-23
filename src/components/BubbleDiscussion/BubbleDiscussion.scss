@@ -1,0 +1,22 @@
+.conv-type{
+    background-color: white;
+    padding: 10px;
+    box-shadow: 2px 2px 10px #d3d6db;
+    border-radius: 5px;
+    margin-bottom: 10px;
+   width: 50%;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   .title-div{
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       h2{
+        margin: 0;
+       }
+   }
+       p{
+        margin: 0;
+       }
+}
