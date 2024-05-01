@@ -1,0 +1,12 @@
+.container-home{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .home-box{
+        h1{
+            font-size: 60px;
+            color: #8C54FF;
+        }
+    }
+}

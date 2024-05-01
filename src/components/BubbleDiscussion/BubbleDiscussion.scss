@@ -8,6 +8,16 @@
    height: auto;
    display: flex;
    flex-direction: column;
+   position: relative;
+//    .online{
+//     position: absolute;
+//     height: 10px;
+//     width: 10px;
+//     background-color: #42b883;
+//     border-radius: 50%;
+//     right: 2%;
+//     top: 7%;
+//    }
    .title-div{
        display: flex;
        justify-content: space-between;
@@ -15,6 +25,7 @@
        h2{
         margin: 0;
        }
+      
    }
        p{
         margin: 0;

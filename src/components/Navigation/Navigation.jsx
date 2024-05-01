@@ -26,7 +26,7 @@ const dispatch = useDispatch();
     <nav className='nav-container'>
         <div className='nav'>
 
-        <div><NavLink to='/'>ChatRoom</NavLink></div>
+        <div><NavLink to='/home'>ChatRoom</NavLink></div>
        
           {
             user.isConnect === 'yes' ?  ( <ul><li><NavLink to='chat'>ChatRoom</NavLink></li> <li><NavLink to='profil/:id' >Profil</NavLink></li>

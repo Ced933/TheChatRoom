@@ -8,7 +8,7 @@ import BaseLayout from "./components/BaseLayout";
 import Profil from "./page/Profil/Profil";
 import ErrorPage from "./page/ErrorPage/ErrorPage";
 import { useSelector } from "react-redux";
-import Home from "./page/Home/Home";
+import Home from "./page/Home/Home.tsx";
 
 function App() {
   const user = useSelector((state) => state.user.userInfo);
