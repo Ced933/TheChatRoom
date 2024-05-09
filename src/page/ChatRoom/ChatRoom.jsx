@@ -4,11 +4,11 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import BubbleDiscussion from '../../components/BubbleDiscussion/BubbleDiscussion';
 import MyBubbleDiscussion from '../../components/MyBubbleDiscussion/MyBubbleDiscussion';
-// import { io } from "socket.io-client";
+import { io } from "socket.io-client";
 
 
 
-// const socket = io.connect("http://localhost:5002");
+const socket = io.connect("http://localhost:5002");
 export default function ChatRoom() {
 
 
@@ -28,22 +28,24 @@ export default function ChatRoom() {
 // console.log(window.innerHeight)
 
 const[message,setMessage]= useState('');
-// const[messageRecieve,setMessageRecieve]= useState('')
+const[messageRecieve,setMessageRecieve]= useState('')
 let firstname = user.firstname; 
 let lastname =  user.lastname;
 
-// console.log(messageRecieve)
+console.log(messageRecieve)
 useEffect(()=>{
     const getMessage = async ()=>{
        await axios.get('http://localhost:5002/post').then((res)=> setArrayData(res.data))
 
     }
     getMessage();
-// socket.on("recieve_message", (data) =>{
-//     setMessageRecieve(data.message);
+socket.on("recieve_message", (data) =>{
+    setMessageRecieve(data.message);
+    // si on ne met pas cette ligne le socket oi va se jouer plusieur fois 
+    return ()=> socket?.off('recieve_message')
    
-// })
-   },[arrayData])
+})
+   },[socket,setArrayData,arrayData])
 
 const handleSubmit = (e)=>{
 
@@ -77,7 +79,7 @@ if(message.length <1){
     axios.post('http://localhost:5002/post', {message,firstname,lastname}).then(result => {
             console.log(result)
     })
-    // socket.emit("send_message",{message:message})
+    socket.emit("send_message",{message:message})
     
 }
 

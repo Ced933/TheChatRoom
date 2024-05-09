@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Register.scss';
 import { Link } from 'react-router-dom';
-import Navigation from '../../components/Navigation/Navigation';
+import axios from 'axios';
+// import Navigation from '../../components/Navigation/Navigation';
 
 export default function Register() {
 // variable name 
@@ -20,8 +21,24 @@ const [errorMessageLastName, setErrorMessageLastName] = useState(false)
 const [errorEmail, setErrorEmail] = useState(false)
 const [errorPassword, setErrorPassword] = useState(false)
 const [errorConfirmPassword, setErrorConfirmPassword] = useState(false)
+const [errorEmailExisted, setErrorEmailExisted] = useState(false)
 
 
+
+const [arrayDataUser, setArrayDataUser] = useState([]);
+let arrayMailUser = []
+for(let x = 0; x< arrayDataUser.length; x++) {
+    arrayMailUser.push(arrayDataUser[x].email)
+}
+console.log(arrayMailUser)
+useEffect(() =>{
+    const getMessage = async ()=>{
+        await axios.get('http://localhost:5002/user').then((res)=> setArrayDataUser(res.data))
+    
+     }
+     getMessage();
+
+},[])
 
 
 const handleSubmit = (e)=>{
@@ -49,12 +66,19 @@ const handleSubmit = (e)=>{
         setErrorMessageLastName(false)
         
     }
-    // --------
+    // -------- Email
     if(!checkEmail){
         setErrorEmail(true)
+        setErrorEmailExisted(false)
         console.log('recommance')
         return false
-    } else{
+    }
+    else if (arrayMailUser.includes(email)){
+        setErrorEmailExisted(true)
+        setErrorEmail(false)
+        return false
+    }
+    else{
         console.log(lastName)
         setErrorEmail(false)
         
@@ -126,6 +150,9 @@ const handleSubmit = (e)=>{
             <input className="input-login" onInput={(e)=>setEmail(e.target.value)} type="email" placeholder="Email"/>
             {
                 errorEmail ? <p className='error-message'>Ceci n'est pas un mail</p> :null
+            }
+             {
+                errorEmailExisted ? <p className='error-message'>Ce mail existe déjà</p> :null
             }
             <input className="input-login" onInput={(e)=>setPassword(e.target.value)} type="password" placeholder="Password" />
             {
