@@ -45,7 +45,7 @@ socket.on("recieve_message", (data) =>{
     return ()=> socket?.off('recieve_message')
    
 })
-   },[socket,setArrayData,arrayData])
+   },[socket])
 
 const handleSubmit = (e)=>{
 
@@ -102,12 +102,19 @@ if(message.length <1){
                if(user.firstname === message.firstname && user.lastname === message.lastname){
                 return <MyBubbleDiscussion key={index} setArrayData={setArrayData} item={message._id} arrayData={arrayData} message={message} />
                }
+            //    else if (messageRecieve !== ''){
+            //    console.log('new message')
+            //    }
                else{
                return <BubbleDiscussion key={index}  message={message}  />
                }
                }) 
 
             }
+
+            {/* {
+                messageRecieve  ==! '' ? <BubbleDiscussion  message={messageRecieve} /> : null
+            } */}
 
 
                 
