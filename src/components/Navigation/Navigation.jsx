@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Navigation() {
   const user = useSelector( state => state.user.userInfo)
-  // console.log(user)
-
-const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
+// logout 
   const handleLogout = ()=>{
     dispatch({
       type:'user/userInfo',

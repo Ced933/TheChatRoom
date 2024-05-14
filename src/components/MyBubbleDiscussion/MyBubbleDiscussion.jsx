@@ -2,12 +2,9 @@ import React from 'react';
 import './MyBubbleDiscussion.scss';
 import axios from 'axios';
 
-
-
 // message = un post, arrayData =  tableau de tous les post, item = id du post sur lequel j'ai cliqué, setArraydate = pour affecter le nouveau tableau 
 export default function MyBubbleDiscussion({message, arrayData, item,setArrayData}) {
 // pour recupérer l'id de notre post, item est message._id qu'on a grace a notre boucle dans chatRoom
-
 
     const handleDeleteMessage = (item)=>{
         console.log('on a cliquer sur le bouton' + item)
@@ -19,10 +16,6 @@ export default function MyBubbleDiscussion({message, arrayData, item,setArrayDat
         }else{
             console.log("l'id n'a pas été identifié")
         }
-
-
-
-        
 
         }
   return (

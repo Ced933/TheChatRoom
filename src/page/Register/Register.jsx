@@ -56,7 +56,7 @@ const handleSubmit = (e)=>{
         setErrorMessageName(false)
         
     }
-// --------
+// -------- Lastname
     if(!checkLastName || firstName.length < 2){
         setErrorMessageLastName(true)
         console.log('recommance')
@@ -83,7 +83,7 @@ const handleSubmit = (e)=>{
         setErrorEmail(false)
         
     }
-
+// --------- Password 
     if(password.length < 8){
         setErrorPassword(true)
         console.log('recommance')
@@ -93,7 +93,7 @@ const handleSubmit = (e)=>{
         setErrorPassword(false)
         
     }
-    
+    //--------- confirm password 
     if(password !== confirmPassword){
         setErrorConfirmPassword(true)
         console.log('recommance')
@@ -120,10 +120,6 @@ const handleSubmit = (e)=>{
     }).then((response) => response.json())
     .then((json) => console.log(json));
 
-    // console.log(lastName)
-    // console.log(email)
-    // console.log(password)
-    // console.log(confirmPassword)
     // effacer le fomulaire apres envoie 
     document.getElementById('form').reset();
     // réinitialiser toutes les variables 
