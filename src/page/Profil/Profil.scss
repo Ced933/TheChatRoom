@@ -8,26 +8,48 @@
         box-shadow: 4px 4px 15px #d3d6db;
         padding: 30px;
         border-radius: 10px;
-       .div-img{
-        width: 100%;
-        display: flex;
-        justify-content: center;
+       
+    //    .div-img{
+    //     width: 100%;
+    //     display: flex;
+    //     justify-content: center;
         
-            .img-profil{
+    //         .img-profil{
                 
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-                border-radius: 50%;
-            }
-        }
+    //             width: 100px;
+    //             height: 100px;
+    //             object-fit: cover;
+    //             border-radius: 50%;
+    //         }
+    //     }
+
         h2{
             text-align: center;
             text-transform: uppercase;
             color: #8C54FF;
         }
+        .describe-profil{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
         h3{
             margin: 0;
+        }
+        .form-edited{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .input-edited{
+                padding: 5px;
+            }
+            .btn-edited{
+                padding: 5px;
+                color: white;
+                background-color: #8C54FF;
+                border: #8C54FF;
+                border-radius: 3px;
+            }
         }
         p{
             margin: 10px 0;
@@ -35,5 +57,8 @@
         .delete-account-btn{
             color: red;
         }
+
+    }
+
     }
 }

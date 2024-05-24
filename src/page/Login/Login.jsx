@@ -14,7 +14,6 @@ export default function Login() {
 
   const [passwordError, setPasswordError] = useState(false)
 
-
   useEffect(()=>{
     axios.get('http://localhost:5002/user').then((res)=> setArrayDataUser(res.data))
   },[])

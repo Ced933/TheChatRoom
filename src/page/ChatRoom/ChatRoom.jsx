@@ -4,18 +4,20 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import BubbleDiscussion from '../../components/BubbleDiscussion/BubbleDiscussion';
 import MyBubbleDiscussion from '../../components/MyBubbleDiscussion/MyBubbleDiscussion';
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 
-const socket = io.connect("http://localhost:5002");
+// const socket = io.connect("http://localhost:5002");
 
 export default function ChatRoom() {
 
     const  [arrayData,setArrayData ] = useState([])
     const user = useSelector(state => state.user.userInfo)
+    console.log(user)
     const[message,setMessage]= useState('');
     const[messageRecieve,setMessageRecieve]= useState('')
     let firstname = user.firstname; 
     let lastname =  user.lastname;
+    let email =  user.email;
     console.log(messageRecieve)
 
     useEffect(()=>{
@@ -24,12 +26,12 @@ export default function ChatRoom() {
 
         }
         getMessage();
-    socket.on("recieve_message", (data) =>{
-        setMessageRecieve(data.message);
-        // si on ne met pas cette ligne le socket oi va se jouer plusieur fois 
-        return ()=> socket?.off('recieve_message')
+    // socket.on("recieve_message", (data) =>{
+    //     setMessageRecieve(data.message);
+    //     // si on ne met pas cette ligne le socket oi va se jouer plusieur fois 
+    //     return ()=> socket?.off('recieve_message')
     
-    })
+    // })
     },[])
 
     const handleSubmit = (e)=>{
@@ -44,6 +46,7 @@ export default function ChatRoom() {
         console.log(message)
         // l'element dans lequel on va faire apparaitre le chat
         let boxchat = document.querySelector('.chat-box');
+        
         // la création de la html css de la boite de dialogue 
         boxchat.innerHTML += `
         <div class='conv-type-main-user'>
@@ -61,10 +64,10 @@ export default function ChatRoom() {
         // a chaque message on est mis au pied de la conversation 
         document.getElementById('chatbox').scrollTo(0, document.body.scrollHeight);
         // on crée le message dans la base de donnée 
-        axios.post('http://localhost:5002/post', {message,firstname,lastname}).then(result => {
+        axios.post('http://localhost:5002/post', {message,firstname,lastname,email}).then(result => {
                 console.log(result)
         })
-        socket.emit("send_message",{message:message})
+        // socket.emit("send_message",{message:message})
         
     }
 
@@ -81,8 +84,9 @@ export default function ChatRoom() {
 
             {
                arrayData.map( (message,index)=>{
+                console.log(message);
                 // si dans la conversation on retouve les message de ce compte alors ils se mettent à droite en vert 
-               if(user.firstname === message.firstname && user.lastname === message.lastname){
+               if(user.email === message.email){
                 return <MyBubbleDiscussion key={index} setArrayData={setArrayData} item={message._id} arrayData={arrayData} message={message} />
                }
                else{
